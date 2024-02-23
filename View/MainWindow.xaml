@@ -3,10 +3,98 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Scrapbook"
+        xmlns:local="clr-namespace:Scrapbook" xmlns:viewmodel="clr-namespace:Scrapbook.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Scrapbook" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!-- Menu Bar -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="File"/>
+            <MenuItem Header="Tools"/>
+        </Menu>
+        
+        <!-- Toolbar -->
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <Button>
+                    <Image Source="../Graphics/Toolbar/save.png"/>
+                </Button>
+                <Button>
+                    <Image Source="../Graphics/Toolbar/add_box.png"/>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        
+        <!-- Main Content Grid-->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--   Main View   -->
 
+            <!-- Search bar -->
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <TextBlock Text="Filter:"/>
+                <TextBox MinWidth="100"/>
+            </StackPanel>
+
+            <!-- Collection tree view -->
+            <TreeView Grid.Row="1" Grid.Column="0">
+                <TreeViewItem Header="Topic" IsExpanded="True">
+                    <TreeViewItem Header="Reformation"/>
+                    <TreeViewItem Header="Monarchy"/>
+                    <TreeViewItem Header="Steam engines"/>
+                </TreeViewItem>
+            </TreeView>
+
+            <!-- Grid Splitter: TreeView / Datagrid-->
+            <GridSplitter Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Stretch"
+              Style="{StaticResource GrayGridSplitterStyle}"/>
+            
+            <!-- Main data grid-->
+            <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding PostageStamps}"/>
+
+            <!-- Grid Splitter: Master view / Detail view-->
+            <GridSplitter Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Stretch"
+              Style="{StaticResource GrayGridSplitterStyle}"/>
+
+            <!-- Detail View -->
+            <Grid Grid.Column="2" Grid.Row="1">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock Text="Name"/>
+                            <TextBox/>
+                            <TextBlock Text="Issued date"/>
+                            <TextBox/>
+                            <TextBlock Text="Country"/>
+                            <TextBox/>
+                            <TextBlock Text="Topic"/>
+                            <TextBox/>
+                            <TextBlock Text="Description"/>
+                            <TextBox/>
+                            <TextBlock Text="Images"/>
+                            <Image Source="../Graphics/Placeholder/stamp.jpg" MaxWidth="200"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

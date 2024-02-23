@@ -9,14 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
+    <None Remove="Graphics\Placeholder\stamp.jpg" />
+    <None Remove="Graphics\Toolbar\add_box.png" />
+    <None Remove="Graphics\Toolbar\save.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Graphics\Placeholder\stamp.jpg" />
+    <Resource Include="Graphics\Toolbar\add_box.png" />
+    <Resource Include="Graphics\Toolbar\save.png" />
   </ItemGroup>
 
 </Project>
