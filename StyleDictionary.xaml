@@ -10,4 +10,12 @@
         <Setter Property="Background" Value="Gray"/>
         <Setter Property="ShowsPreview" Value="True"/>
     </Style>
+    <Style TargetType="TextBlock" x:Key="FiltersLabel">
+        
+    </Style>
+    <Style TargetType="TextBox" x:Key="RangeBox">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="MinWidth" Value="50"/>
+        <Setter Property="Margin" Value="10 0"/>
+    </Style>
 </ResourceDictionary>

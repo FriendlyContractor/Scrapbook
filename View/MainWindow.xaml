@@ -15,13 +15,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <!-- Menu Bar -->
         <Menu Grid.Row="0">
             <MenuItem Header="File"/>
             <MenuItem Header="Tools"/>
         </Menu>
-        
+
         <!-- Toolbar -->
         <ToolBarTray Grid.Row="1">
             <ToolBar>
@@ -33,7 +33,7 @@
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        
+
         <!-- Main Content Grid-->
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
@@ -41,32 +41,150 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            
-            <!--   Main View   -->
 
-            <!-- Search bar -->
-            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                <TextBlock Text="Filter:"/>
-                <TextBox MinWidth="100"/>
+            <!-- ===   Main View   === -->
+
+            <!-- Fillters -->
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                    <TextBlock Text="Filters" VerticalAlignment="Center"/>
+                    <Button Content="Search" Margin="10 0"/>
+                </StackPanel>
+                <TreeView>
+                    <!-- General Stamp Properties -->
+                    <TreeViewItem Header="General" IsExpanded="True">
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel>
+                                    <!-- Name -->
+                                    <TextBlock Text="Name" Style="{StaticResource FiltersLabel}"/>
+                                    <TextBox/>
+                                    <!-- Theme -->
+                                    <TextBlock Text="Theme" Style="{StaticResource FiltersLabel}"/>
+                                    <ComboBox/>
+                                    <!-- Series -->
+                                    <TextBlock Text="Series" Style="{StaticResource FiltersLabel}"/>
+                                    <ComboBox/>
+                                    <!-- Issued Year -->
+                                    <TextBlock Text="Issued year" Style="{StaticResource FiltersLabel}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Style="{StaticResource RangeBox}"/>
+                                        <TextBlock Text="-" TextAlignment="Center" Grid.ColumnSpan="2"/>
+                                        <TextBox Style="{StaticResource RangeBox}"/>
+                                    </StackPanel>
+                                    <!-- Issued Country -->
+                                    <TextBlock Text="Issued country" Style="{StaticResource FiltersLabel}"/>
+                                    <ComboBox/>
+                                    <!-- Michael Catalog Number -->
+                                    <TextBlock Text="Michael catalog number" Style="{StaticResource FiltersLabel}"/>
+                                    <TextBox/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeViewItem>
+
+                    <!-- = Stamp Physical Traits = -->
+                    <TreeViewItem Header="Physical Condition" d:IsExpanded="True">
+
+                        <!-- Sheet -->
+                        <TreeViewItem Header="Sheet" d:IsExpanded="True">
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Sheet" Style="{StaticResource FiltersLabel}"  DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="No sheet" Style="{StaticResource FiltersLabel}"  DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                        </TreeViewItem>
+
+                        <!-- Hinge -->
+                        <TreeViewItem Header="Hinge">
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Hinge" Style="{StaticResource FiltersLabel}"  DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="No hinge" Style="{StaticResource FiltersLabel}"  DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                        </TreeViewItem>
+
+                        <!-- Condition -->
+                        <TreeViewItem Header="Condition">
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Mint" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Unused" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Used" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="FiscallyUsed" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                        </TreeViewItem>
+
+                        <!-- Perforation -->
+                        <TreeViewItem Header="Perforation">
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="None" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Line" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Comb" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox/>
+                                            <TextBlock Text="Harrow" DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeView>
             </StackPanel>
 
-            <!-- Collection tree view -->
-            <TreeView Grid.Row="1" Grid.Column="0">
-                <TreeViewItem Header="Topic" IsExpanded="True">
-                    <TreeViewItem Header="Reformation"/>
-                    <TreeViewItem Header="Monarchy"/>
-                    <TreeViewItem Header="Steam engines"/>
-                </TreeViewItem>
-            </TreeView>
-
-            <!-- Grid Splitter: TreeView / Datagrid-->
+            <!-- Grid Splitter: TreeView / DataGrid-->
             <GridSplitter Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Stretch"
               Style="{StaticResource GrayGridSplitterStyle}"/>
-            
+
             <!-- Main data grid-->
             <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding PostageStamps}"/>
 
@@ -81,13 +199,29 @@
                         <StackPanel>
                             <TextBlock Text="Name"/>
                             <TextBox/>
+                            <TextBlock Text="Theme"/>
+                            <TextBox/>
+                            <TextBlock Text="Series"/>
+                            <TextBox/>
                             <TextBlock Text="Issued date"/>
                             <TextBox/>
-                            <TextBlock Text="Country"/>
-                            <TextBox/>
-                            <TextBlock Text="Topic"/>
+                            <TextBlock Text="Issued country"/>
                             <TextBox/>
                             <TextBlock Text="Description"/>
+                            <TextBox/>
+                            <DockPanel>
+                                <CheckBox/>
+                                <TextBlock Text="Sheet"   DockPanel.Dock="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <CheckBox/>
+                                <TextBlock Text="Hinge"  DockPanel.Dock="Right"/>
+                            </DockPanel>
+                            <TextBlock Text="Condition"/>
+                            <ComboBox/>
+                            <TextBlock Text="Perforation"/>
+                            <ComboBox/>
+                            <TextBlock Text="Michaels catalog number"/>
                             <TextBox/>
                             <TextBlock Text="Images"/>
                             <Image Source="../Graphics/Placeholder/stamp.jpg" MaxWidth="200"/>
